@@ -57,6 +57,6 @@ class Game {
     }
 
     gameOver() {
-        this.activePhrase = null;
+        
     }
 }
