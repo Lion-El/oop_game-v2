@@ -4,11 +4,11 @@
 class Phrase {
     constructor(phrase) {
         this.phrase = phrase.toLowerCase();
+        this.array = [];
     }
 
     addPhraseToDisplay() {
         let phraseArray = this.phrase.split('');
-        console.log(phraseArray);
         phraseArray.forEach(letter => {
             if (/[a-z]/.test(letter)) {
                 ul.insertAdjacentHTML('beforeend', `<li class="hide letter ${letter}">${letter}</li>`);
@@ -18,17 +18,20 @@ class Phrase {
         });
     }
 
-    checkLetter() {
-
-    }
-
-    showMatchedLetter(letter) {
-        const li = ul.querySelectorAll('li');
+    checkLetter(letterSelect) {
+        const li = ul.childNodes;
         li.forEach(element => {
-            if (element.textContent === letter) {
-                element.classList.replace('hide', 'show');
+            if(element.textContent === letterSelect) {
+                this.array.push(element);
             }
         });
+    }
+
+    showMatchedLetter(letterSelect) {
+        this.checkLetter(letterSelect);
+        this.array
+        .filter(element => element.matches('.hide'))
+        .forEach(element => element.classList.replace('hide', 'show'));
     }
 
 }

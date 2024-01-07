@@ -15,18 +15,9 @@ class Game {
         this.phraseObject = null;
     }
 
-    // set newPhrase(newPhrase) {
-    //     this.phrase = newPhrase; 
-    // }
-
-    // get newPhrase() {
-    //     return this.phrase;
-    // }
-
     startGame() {
         overlay.setAttribute('style','display:none;');
         this.activePhrase = this.getRandomPhrase();
-        console.log(this.activePhrase);
         this.phraseObject = new Phrase(this.activePhrase);
         this.phraseObject.addPhraseToDisplay();
     }
@@ -35,28 +26,48 @@ class Game {
         let index = Math.floor(Math.random()*this.phrases.length);
         return this.phrases
         .filter((object) => object === this.phrases[index])
-        .map((object) => object.phrase).shift();
+        .map((object) => object.phrase).shift().toLowerCase();
     }
 
     handleInteraction(button) {
-        console.log(button);
         if (!this.activePhrase.includes(button.textContent)) {
-            button.setAttribute('disabled', '');
+            button.setAttribute('disabled', 'true');
+            button.setAttribute('class', 'wrong');
+            this.removeLife();
         } else {
             button.setAttribute('class', 'chosen');
             this.phraseObject.showMatchedLetter(button.textContent);
+            let result = this.checkForWin();
+            this.gameOver(result);
         }
     }
 
     removeLife() {
-
+        lives[this.missed].setAttribute('src', 'images/lostHeart.png');
+        this.missed++;
+        if (this.missed === 5) {
+            this.gameOver('lose');
+        }
     }
 
     checkForWin() {
-
+        const li = Array.from(ul.childNodes);
+        const liArray = li
+        .filter(element => !element.matches('.space'));
+        if (this.phraseObject.array.length === liArray.length) {
+            return 'win';
+        }
     }
 
-    gameOver() {
-        
+    gameOver(result) {
+        if (result === 'win') {
+            endGame.innerText = 'You Smashed It! Well done.';
+            overlay.classList.replace('start', 'win');
+            overlay.setAttribute('style','display:flex;');
+        } else if (result === 'lose') {
+            endGame.innerText = 'Unlucky! Good try.';
+            overlay.classList.replace('start', 'lose');
+            overlay.setAttribute('style','display:flex;');
+        }
     }
 }
