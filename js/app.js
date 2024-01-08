@@ -8,6 +8,7 @@ const ul = document.querySelector('ul');
 const keys = document.querySelectorAll('.key');
 const lives = document.querySelectorAll('img');
 
+
 const gameAction  = {
     gameObject: null,
 
@@ -50,4 +51,10 @@ keys.forEach(key => {
         currentGame.handleInteraction(key);
     })
 });
+
+document.addEventListener('keydown', (e) => {
+    const currentGame = gameAction.newGame;
+    currentGame.handleInteraction(e.key);
+});
+
 
