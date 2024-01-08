@@ -18,7 +18,6 @@ class Game {
     startGame() {
         overlay.setAttribute('style','display:none;');
         this.activePhrase = this.getRandomPhrase();
-        console.log(this.activePhrase);
         this.phraseObject = new Phrase(this.activePhrase);
         this.phraseObject.addPhraseToDisplay();
     }
@@ -35,17 +34,18 @@ class Game {
         const userSelection = button
         .filter(element => element.innerText === selection)
         .shift();
-        if (!this.activePhrase.includes(selection)) {
-            userSelection.setAttribute('disabled', 'true');
-            userSelection.setAttribute('class', 'wrong');
-            this.removeLife();
-        } else {
-            userSelection.setAttribute('class', 'chosen');
-            this.phraseObject.showMatchedLetter(userSelection.textContent);
-            let result = this.checkForWin();
-            this.gameOver(result);
+        if (userSelection.matches('.key')) {
+            if (!this.activePhrase.includes(selection)) {
+                userSelection.setAttribute('disabled', 'true');
+                userSelection.setAttribute('class', 'wrong');
+                this.removeLife();
+            } else {
+                userSelection.setAttribute('class', 'chosen');
+                this.phraseObject.showMatchedLetter(selection);
+                let result = this.checkForWin();
+                this.gameOver(result);
+            }
         }
-        
     }
 
     handleInteraction(button) {
