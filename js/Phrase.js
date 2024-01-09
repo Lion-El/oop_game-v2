@@ -1,12 +1,12 @@
-/* Treehouse FSJS Techdegree
- * Project 4 - OOP Game App
+/*
+ * OOP Game App
  * Phrase.js */
 class Phrase {
     constructor(phrase) {
         this.phrase = phrase;
         this.array = [];
     }
-
+    // add placeholder elements with text matching phrase
     addPhraseToDisplay() {
         let phraseArray = this.phrase.split('');
         phraseArray.forEach(letter => {
@@ -17,7 +17,7 @@ class Phrase {
             }
         });
     }
-
+    // store li elements with text matching phrase
     checkLetter(letterSelect) {
         const li = ul.childNodes;
         li.forEach(element => {
@@ -26,7 +26,7 @@ class Phrase {
             }
         });
     }
-
+    // select and reveal previously stored elements that are hidden
     showMatchedLetter(letterSelect) {
         this.checkLetter(letterSelect);
         this.array

@@ -1,5 +1,5 @@
-/* Treehouse FSJS Techdegree
- * Project 4 - OOP Game App
+/* 
+ * OOP Game App
  * Game.js */
 class Game {
     constructor() {
@@ -14,23 +14,20 @@ class Game {
         this.activePhrase = null;
         this.phraseObject = null;
     }
-
+    // create phrase object with random phrase and add to display 
     startGame() {
-        endGame.innerText = '';
-        endGame.setAttribute('style' ,'transform:rotate(0deg);');
-        overlay.setAttribute('style','top:-100%;');
         this.activePhrase = this.getRandomPhrase();
         this.phraseObject = new Phrase(this.activePhrase);
         this.phraseObject.addPhraseToDisplay();
     }
-
+    // return random phrase/text node
     getRandomPhrase() {
         let index = Math.floor(Math.random()*this.phrases.length);
         return this.phrases
         .filter((object) => object === this.phrases[index])
         .map((object) => object.phrase).shift().toLowerCase();
     }
-
+    // set keyboard/button element display styles based on selection
     setAttributes(selection) {
         const button = Array.from(keys);
         const userSelection = button
@@ -68,7 +65,7 @@ class Game {
             this.gameOver('lose');
         }
     }
-
+    // compare length of stored matching selection with phrase element length
     checkForWin() {
         const li = Array.from(ul.childNodes);
         const liArray = li
@@ -77,7 +74,7 @@ class Game {
             return 'win';
         }
     }
-
+    // set display styles based on result
     gameOver(result) {
         if (result === 'win') {
             endGame.innerText = 'You Smashed It! Well done.';
