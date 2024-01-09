@@ -16,7 +16,9 @@ class Game {
     }
 
     startGame() {
-        overlay.setAttribute('style','display:none;');
+        endGame.setAttribute('style' ,'transform:translate(0px);');
+        endGame.setAttribute('style' ,'transform:rotate(0deg);');
+        overlay.setAttribute('style','top:-100%;');
         this.activePhrase = this.getRandomPhrase();
         this.phraseObject = new Phrase(this.activePhrase);
         this.phraseObject.addPhraseToDisplay();
@@ -80,11 +82,13 @@ class Game {
         if (result === 'win') {
             endGame.innerText = 'You Smashed It! Well done.';
             overlay.classList.replace('start', 'win');
-            overlay.setAttribute('style','display:flex;');
+            overlay.setAttribute('style','top:0;');
+            endGame.setAttribute('style' ,'transform:rotate(720deg);');
         } else if (result === 'lose') {
             endGame.innerText = 'Unlucky! Good try.';
             overlay.classList.replace('start', 'lose');
-            overlay.setAttribute('style','display:flex;');
+            overlay.setAttribute('style','top:0;');
+            endGame.setAttribute('style' ,'transform:rotate(720deg);');
         }
     }
 }

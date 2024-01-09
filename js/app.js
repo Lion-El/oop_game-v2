@@ -9,6 +9,9 @@ const keys = document.querySelectorAll('.key');
 const lives = document.querySelectorAll('img');
 
 
+
+
+
 const gameAction  = {
     gameObject: null,
 
