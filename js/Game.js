@@ -16,7 +16,7 @@ class Game {
     }
 
     startGame() {
-        endGame.setAttribute('style' ,'transform:translate(0px);');
+        endGame.innerText = '';
         endGame.setAttribute('style' ,'transform:rotate(0deg);');
         overlay.setAttribute('style','top:-100%;');
         this.activePhrase = this.getRandomPhrase();
