@@ -8,12 +8,12 @@ When the start game is invoked, the header that covers the display is retracted 
 
 ```JavaScript
 const newGame = new Game();
-    gameAction.newGame = newGame;
-    newGame.startGame();
-    endGame.setAttribute('style', 'transform:rotate(0deg);');
-    overlay.setAttribute('style', 'top:-100%;');
-    endGame.innerText = '';
-    overlay.setAttribute('class', 'start');
+gameAction.newGame = newGame;
+newGame.startGame();
+endGame.setAttribute('style', 'transform:rotate(0deg);');
+overlay.setAttribute('style', 'top:-100%;');
+endGame.innerText = '';
+overlay.setAttribute('class', 'start');
 ```
 
 The end game result is rendered to the page via the header sliding down into view with a message that is rendered to the screen based on the result. This message then spins 720 degrees after the header has completed its transition.
