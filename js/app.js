@@ -41,9 +41,9 @@ button.addEventListener('click', () => {
     const newGame = new Game();
     gameAction.newGame = newGame;
     newGame.startGame();
+    endGame.setAttribute('style', 'transform:rotate(0deg);');
     overlay.setAttribute('style', 'top:-100%;');
     endGame.innerText = '';
-    endGame.setAttribute('style', 'transform:rotate(0deg);');
     overlay.setAttribute('class', 'start');
 });
 //get current game access to inital method
