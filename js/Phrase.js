@@ -3,7 +3,7 @@
  * Phrase.js */
 class Phrase {
     constructor(phrase) {
-        this.phrase = phrase;
+        this.phrase = phrase.toLowerCase();
         this.array = [];
     }
     // add placeholder elements with text matching phrase

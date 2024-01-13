@@ -5,27 +5,28 @@ class Game {
     constructor() {
         this.missed = 0;
         this.phrases = [
-            {phrase: 'A few sandwiches short of a picnic'}, 
-            {phrase: 'Bobs your uncle'}, 
-            {phrase: 'Give me a tinkle on the blower'}, 
-            {phrase: 'Over egg the pudding'}, 
-            {phrase: 'Spanner in the works'}
+            new Phrase('A few sandwiches short of a picnic'), 
+            new Phrase('Bobs your uncle'), 
+            new Phrase('Give me a tinkle on the blower'), 
+            new Phrase('Over egg the pudding'), 
+            new Phrase('Spanner in the works') 
         ];
         this.activePhrase = null;
         this.phraseObject = null;
     }
     // create phrase object with random phrase and add to display 
     startGame() {
-        this.activePhrase = this.getRandomPhrase();
-        this.phraseObject = new Phrase(this.activePhrase);
-        this.phraseObject.addPhraseToDisplay();
+        let index = this.getRandomPhrase();
+        this.activePhrase = this.phrases[index];
+        this.activePhrase.addPhraseToDisplay();
     }
     // return random phrase/text node
     getRandomPhrase() {
         let index = Math.floor(Math.random()*this.phrases.length);
-        return this.phrases
-        .filter((object) => object === this.phrases[index])
-        .map((object) => object.phrase).shift().toLowerCase();
+        return index;
+        // .filter(object => object === this.phrases[index]);
+        // .shift().toLowerCase();
+        // .map((object) => object.phrase).shift().toLowerCase();
     }
     // set keyboard/button element display styles based on selection
     setAttributes(selection) {
