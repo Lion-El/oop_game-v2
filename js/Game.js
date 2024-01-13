@@ -12,7 +12,6 @@ class Game {
             new Phrase('Spanner in the works') 
         ];
         this.activePhrase = null;
-        this.phraseObject = null;
     }
     // create phrase object with random phrase and add to display 
     startGame() {
@@ -22,11 +21,7 @@ class Game {
     }
     // return random phrase/text node
     getRandomPhrase() {
-        let index = Math.floor(Math.random()*this.phrases.length);
-        return index;
-        // .filter(object => object === this.phrases[index]);
-        // .shift().toLowerCase();
-        // .map((object) => object.phrase).shift().toLowerCase();
+        return Math.floor(Math.random()*this.phrases.length);
     }
     // set keyboard/button element display styles based on selection
     setAttributes(selection) {
@@ -36,14 +31,14 @@ class Game {
         .shift();
         if (userSelection) {
             if (userSelection.matches('.key')) {
-                if (!this.activePhrase.includes(selection)) {
+                if (!this.activePhrase.phrase.includes(selection)) {
                     userSelection.setAttribute('disabled', 'true');
                     userSelection.setAttribute('class', 'wrong');
                     this.removeLife();
                 } else {
                     userSelection.setAttribute('disabled', 'true');
                     userSelection.setAttribute('class', 'chosen');
-                    this.phraseObject.showMatchedLetter(selection);
+                    this.activePhrase.showMatchedLetter(selection);
                     let result = this.checkForWin();
                     this.gameOver(result);
                 }
@@ -71,7 +66,7 @@ class Game {
         const li = Array.from(ul.childNodes);
         const liArray = li
         .filter(element => !element.matches('.space'));
-        if (this.phraseObject.array.length === liArray.length) {
+        if (this.activePhrase.array.length === liArray.length) {
             return 'win';
         }
     }
