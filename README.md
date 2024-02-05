@@ -1,6 +1,6 @@
 # OOP Game V2
 
-The OOP game is a phrase-guessing game based on well-known British phrases. The display is populated with placeholder elements that hide a well-known phrase that is randomly generated. Guesses are made via the Keyboard or the digital keyboard rendered to the display. This application was built with object-oriented programming as reflected in the name.
+The OOP game is a phrase-guessing game based on well-known British phrases. The display is populated with placeholder elements that hide a well-known phrase that is randomly generated. Guesses are made via the physical or digital keyboard rendered to the display. This application was built with object-oriented programming as reflected in the name.
 
 ## Style Changes
 
